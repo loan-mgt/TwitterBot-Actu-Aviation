@@ -23,6 +23,14 @@ def get_image(xml):
 
   return xml[i+len(find):i+len(find)+end]
 
+def sepcial_car_filt(text):
+  if '&#8217;' in text:
+    i = text.index("&#8217;")
+    r ='’'  
+    text = text[:i]+r+text[(i+len("&#8217;")):]
+    return sepcial_car_filt(text)
+  else:
+    return text
   
 
 def get_news():
@@ -42,8 +50,7 @@ def get_news():
     c_e = len("&#8230;]]>")
     for i in arti:
 
-      title.append({'title':xml_tools(i,"description")[0][c_s:-c_e],'image':get_image(xml_tools(i,"content:encoded")[0])})
+      title.append({'title':sepcial_car_filt(xml_tools(i,"description")[0][c_s:-c_e]),'image':get_image(xml_tools(i,"content:encoded")[0])})
     return title
-
 
 
