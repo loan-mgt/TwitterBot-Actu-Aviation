@@ -13,37 +13,36 @@ while True:
     data = load_json()
     
     for i in get_news():
-        if i['id'] not in data['done']:
+        if i['title'] not in data['done']:
             
-            print(i['id'])
-            _body = i['summary']
+            print(i['title'])
+            _body = i['title']
             print("len befor traduction",len(_body))
             body = traduction(_body)
             if len(body) > 280:
-                _body = i['title']
-                body = traduction(_body)
-                print('summary to long going for title')
-                if len(body) > 280:
-                    data['done'].append(i['id'])
-                    print("to long skkipng")
-                    break
+                data['done'].append(i['title'])
+                print("to long skkipng")
+                break
+               
+                    
+                    
 
 
-
-            body = hashtag(body)
-            
-            img = i['imageUrl']
-            print(body,img)
-            tweet(img,body)
-            data['done'] = data['done']+[i['id']]
-            break
+            else:
+                body = hashtag(body)
+                
+                img = i['image']
+                print(body,img)
+                tweet(img,body)
+                data['done'] = data['done']+[i['title']]
+                break
         
         
 
     
 
     save_json(data)
-    time.sleep(60*60 )
+    time.sleep(60 )
 
     
     pass

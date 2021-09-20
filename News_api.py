@@ -42,9 +42,8 @@ def get_news():
     c_e = len("&#8230;]]>")
     for i in arti:
 
-      title.append([xml_tools(i,"description")[0][c_s:-c_e],get_image(xml_tools(i,"content:encoded")[0])])
+      title.append({'title':xml_tools(i,"description")[0][c_s:-c_e],'image':get_image(xml_tools(i,"content:encoded")[0])})
+    return title
 
-    print(title[:3])
 
 
-get_news()

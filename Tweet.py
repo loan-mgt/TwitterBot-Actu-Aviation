@@ -14,5 +14,6 @@ api = tweepy.API(auth)
 def tweet(img,msg):
 	
 	r = requests.get(img, allow_redirects=True)
+
 	open('tmp.png', 'wb').write(r.content)
 	api.update_with_media(filename='tmp.png',status=msg)
