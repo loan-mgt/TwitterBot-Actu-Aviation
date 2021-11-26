@@ -29,8 +29,11 @@ while True:
 
 
             else:
-                body = hashtag(body)
-                
+                try:
+                	body = hashtag(body)
+                except:
+                	body = body
+                	print("hashtag failed")
                 img = i['image']
                 print(body,img)
                 tweet(img,body)
