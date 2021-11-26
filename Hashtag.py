@@ -1,3 +1,6 @@
+import requests
+import json
+
 lib_has = {
 'inspiration':"#Inspiration4",
 'Inspiration':"#Inspiration4",
@@ -37,6 +40,9 @@ paritcular ={
 
 
 def hashtag(text):
+	result = requests.get("http://127.0.0.1:5000/hashtag/"+text)
+	return json.loads(result.text)['hashtaged']
+	"""
 	for i, v in paritcular.items():
 		
 		if i in text:
@@ -56,7 +62,7 @@ def hashtag(text):
 			htg_ed.append(i)
 	regrouped = " ".join(htg_ed)
 	return regrouped
-
+	"""
 
 
 

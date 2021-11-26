@@ -42,7 +42,7 @@ while True:
     
 
     save_json(data)
-    time.sleep(60 )
+    time.sleep(60*30 )
 
     
     pass
