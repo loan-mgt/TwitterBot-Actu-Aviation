@@ -4,7 +4,7 @@ import requests
 def get_news():
 	resul = []
 
-	r = requests.get("https://www.air-cosmos.com/actualite/aviation-civile")
+	r = requests.get("https://www.air-cosmos.com/actualite/defense")
 
 
 	b = BeautifulSoup(r.text,features="html5lib")
